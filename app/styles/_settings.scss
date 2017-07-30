@@ -1,0 +1,16 @@
+@function between($to, $from, $toWidth, $fromWidth) {
+  $slope: ($to - $from) / ($toWidth - $fromWidth);
+  $base: $from - $slope * $fromWidth;
+
+  @return calc(#{$base} + #{100vw * $slope});
+}
+
+$header-stack: 'Ailerons', sans-serif;
+$header-min-size: 94px;
+$header-max-size: 140px;
+$header-letter-spacing: -18px;
+$header-word-spacing: -10px;
+
+$body-font-stack: 'Port Lligat Slab', serif;
+$body-min-size: 24px;
+$body-max-size: 30px;

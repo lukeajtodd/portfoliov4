@@ -1,6 +1,18 @@
 // bower:scss
 // endbower
 
+@import 'fonts';
+@import 'settings';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -10,22 +22,118 @@
 
 body {
   background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $body-font-stack;
   color: #333;
+  width: 100vw;
+  max-width: 100%;
+  text-align: center;
+  margin: 0;
+  font-size: between($body-min-size, $body-max-size, 360px, 1140px);
+  overflow-x: hidden;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+p {
+  font-size: between($body-min-size, $body-max-size, 360px, 1140px);
+}
+
+header {
+  display: table;
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  max-width: 100%;
+
+  .header-inner {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    transform: translateY(-4%);
+
+    h1 {
+      font-family: $header-stack;
+      font-weight: bold;
+      font-size: between($header-min-size, $header-max-size, 360px, 1140px);
+      letter-spacing: $header-letter-spacing;
+      word-spacing: $header-word-spacing;
+      margin: 0;
+      margin-left: $header-letter-spacing;
+
+      @media screen and (max-width: 360px) {
+        font-size: $header-min-size;
+        padding: 20px;
+      }
+
+      @media screen and (min-width: 1140px) {
+        font-size: $header-max-size;
+      }
+    }
+
+    .mail-link {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @media screen and (min-width: 600px) {
+        top: 58%;
+        left: 100%;
+        transform: translateX(-107%);
+      }
+    }
+
+    .mail-logo {
+      pointer-events: none;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    text-align: right;
+    padding-right: 0;
+  }
+}
+
+
+.bio {
+  min-height: 40vh;
+  height: 100%;
+  margin-bottom: 30px;
+
+  &-inner,
+  &-skills {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &-inner {
+    text-align: right;
+  }
+
+  &-skills {
+    text-align: left;
+  }
+}
+
+.work {
+
+  height: 100%;
+
+  &-block {
+    width: 80%;
+    margin: 0 auto;
+
+    p, img {
+      display: inline-block;
+    }
+
+    p {
+      text-align: right;
+    }
+
+    img {
+      float: left;
+      width: 100%;
+    }
   }
 }
