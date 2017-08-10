@@ -38,18 +38,68 @@ p {
 
 header {
   display: table;
-  margin: 0 auto;
-  width: 80%;
+  position: relative;
   height: 100vh;
-  max-width: 100%;
+  width: 100vw;
 
-  .header-inner {
-    position: relative;
+  .header__graphic {
+    $graphic-size: 60vw;
+    $graphic-size--max: 320px;
+
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translateX(-50%);
+
+    .cutout {
+      $cutout-size: 45vw;
+      $cutout-size--max: 240px;
+      $position-modifier: 1vw;
+
+      width: $cutout-size;
+      height: $cutout-size;
+      position: absolute;
+      border-radius: 50%;
+      top: ($graphic-size - $cutout-size) - $position-modifier;
+      left: ($graphic-size - $cutout-size) - $position-modifier;
+      z-index: 5;
+      background: #fafafa;
+      max-width: $cutout-size--max;
+      max-height: $cutout-size--max;
+
+      @media screen and (min-width: 530px) {
+        top: 80px;
+        left: 80px;
+      }
+    }
+
+    .night {
+      position: relative;
+      background: #001848;
+      border-radius: 50%;
+      height: $graphic-size;
+      width: $graphic-size;
+      overflow: hidden;
+      z-index: 1;
+      max-width: 320px;
+      max-height: 320px;
+
+      .star {
+        background: #fff99a;
+        position: absolute;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .header__content {
     display: table-cell;
     vertical-align: middle;
-    transform: translateY(-4%);
+    position: relative;
+    z-index: 99;
 
     h1 {
+      text-align: center;
       font-family: $header-stack;
       font-weight: bold;
       font-size: between($header-min-size, $header-max-size, 360px, 1140px);
@@ -70,15 +120,9 @@ header {
 
     .mail-link {
       position: absolute;
-      top: 65%;
+      bottom: 5%;
       left: 50%;
       transform: translate(-50%, -50%);
-
-      @media screen and (min-width: 600px) {
-        top: 58%;
-        left: 100%;
-        transform: translateX(-107%);
-      }
     }
 
     .mail-logo {
@@ -87,18 +131,12 @@ header {
       height: 40px;
     }
   }
-
-  @media screen and (min-width: 600px) {
-    text-align: right;
-    padding-right: 0;
-  }
 }
 
 
 .bio {
   min-height: 40vh;
   height: 100%;
-  margin-bottom: 30px;
 
   &-inner,
   &-skills {
@@ -106,21 +144,17 @@ header {
     margin: 0 auto;
   }
 
+  &-skills,
   &-inner {
-    text-align: right;
-  }
-
-  &-skills {
     text-align: left;
   }
 }
 
 .work {
-
+  width: 100%;
   height: 100%;
 
   &-block {
-    width: 80%;
     margin: 0 auto;
 
     p, img {
@@ -128,7 +162,8 @@ header {
     }
 
     p {
-      text-align: right;
+      text-align: left;
+      padding: 0 12px;
     }
 
     img {
