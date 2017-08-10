@@ -36,11 +36,15 @@ p {
   font-size: between($body-min-size, $body-max-size, 360px, 1140px);
 }
 
+main {
+  padding: 0 $outer-padding;
+}
+
 header {
   display: table;
   position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 
   .header__graphic {
     $graphic-size: 60vw;
@@ -107,10 +111,12 @@ header {
       word-spacing: $header-word-spacing;
       margin: 0;
       margin-left: $header-letter-spacing;
+      padding-top: 20vh;
 
       @media screen and (max-width: 360px) {
         font-size: $header-min-size;
         padding: 20px;
+        padding-top: 20vh;
       }
 
       @media screen and (min-width: 1140px) {
@@ -138,12 +144,6 @@ header {
   min-height: 40vh;
   height: 100%;
 
-  &-inner,
-  &-skills {
-    width: 80%;
-    margin: 0 auto;
-  }
-
   &-skills,
   &-inner {
     text-align: left;
@@ -162,13 +162,14 @@ header {
     }
 
     p {
+      margin: $outer-padding 0;
       text-align: left;
-      padding: 0 12px;
     }
 
     img {
       float: left;
-      width: 100%;
+      width: 100vw;
+      margin-left: -$outer-padding;
     }
   }
 }

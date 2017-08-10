@@ -5,6 +5,8 @@
   @return calc(#{$base} + #{100vw * $slope});
 }
 
+$outer-padding: 24px;
+
 $header-stack: 'Ailerons', sans-serif;
 $header-min-size: 94px;
 $header-max-size: 140px;
